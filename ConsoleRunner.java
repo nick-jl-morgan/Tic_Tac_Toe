@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class ConsoleRunner {
 
-    /**
+    /*
      * Should the human player be the X?  Note that X always
      * goes first.
      */

@@ -35,6 +35,7 @@ public class Board {
      * Convert to a string that shows the board's state.
      */
     public String toString() {
+		return null;
         /*
          * TBD
          */
@@ -45,6 +46,7 @@ public class Board {
      * be in the range [0, 2].
      */
     public char get(int i, int j) {
+		return 0;
         /*
          * TBD
          */
@@ -54,6 +56,7 @@ public class Board {
      * @return true if there remain no empty spots on the board.
      */
     public boolean isFull() {
+		return false;
         /*
          * TBD
          */

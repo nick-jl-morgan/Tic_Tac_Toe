@@ -63,6 +63,7 @@ public class Game {
      *
      */
     public boolean placePlayerPiece(int i, int j) {
+		return false;
         /*
          * TBD
          */

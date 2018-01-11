@@ -9,5 +9,6 @@ public class TicTacToeApplication {
 
     public static void main(String[] args) {
       ConsoleRunner Console = new ConsoleRunner();
+      Console.mainLoop();
     }
 }

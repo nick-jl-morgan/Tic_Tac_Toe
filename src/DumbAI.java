@@ -27,6 +27,7 @@ public class DumbAI implements AI {
     }
 
     public Move chooseMove(Board board) {
+		return null;
         /*
          * TBD
          */

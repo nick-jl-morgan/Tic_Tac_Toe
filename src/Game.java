@@ -21,6 +21,15 @@ public class Game {
         /*
          * TBD
          */
+    	this.status=GameStatus.IN_PROGRESS;
+    	if(challenging)
+    	{
+    		this.ai= new SmartAI(!playerIsX);
+    	}
+    	else
+    	{
+    		this.ai = new DumbAI(!playerIsX);
+    	}
     }
 
     /**
@@ -30,6 +39,7 @@ public class Game {
         /*
          * TBD
          */
+    	return board;
     }
 
     /**
@@ -39,6 +49,7 @@ public class Game {
         /*
          * TBD
          */
+    	return status; 
     }
     
     /**

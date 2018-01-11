@@ -17,6 +17,8 @@ public class ConsoleRunner {
      */
     private boolean playerIsX;
 
+    private boolean isChallenging;
+    
     private Game game;
     
     // Use to process text input from the user.
@@ -36,6 +38,30 @@ public class ConsoleRunner {
          * Use the 'next' method of Scanner and the 'matches' of the String
          * class to process user responses as strings.
          */
+    	System.out.println("Would you like to play as X? [Y/N]");
+    	
+        if( scanner.next().equalsIgnoreCase("Y") )
+        {
+        	this.playerIsX=true;
+        }
+        else
+        {
+        	this.playerIsX=false;
+        }
+        	
+        System.out.println("Do you want a challenging Opponent? [Y/N]");
+        if( scanner.next().equalsIgnoreCase("Y") )
+        {
+        	this.isChallenging=true;
+        }
+        else
+        {
+        	this.isChallenging=false;
+        }
+        
+        
+        game=new Game( playerIsX, isChallenging);
+    	
     }
 
     /**

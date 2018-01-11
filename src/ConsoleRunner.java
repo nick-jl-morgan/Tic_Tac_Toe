@@ -80,9 +80,16 @@ public class ConsoleRunner {
          */
     	while(this.game.getStatus()== GameStatus.IN_PROGRESS)
     	{
-    		
-    	//dostuff
-    		
+    		int i , j;
+    		System.out.println(game.getBoard().toString());
+			do
+    		{
+    			System.out.println("Choose a column [0:2]");
+    			i = scanner.nextInt();
+    			System.out.println("Choose a row [0:2]");
+    			j = scanner.nextInt();
+    			
+    		} while (!game.placePlayerPiece(i , j) );
     	}
     }
 }

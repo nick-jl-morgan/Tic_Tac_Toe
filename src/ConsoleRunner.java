@@ -78,5 +78,11 @@ public class ConsoleRunner {
          * There is enough work to do here that you may want to introduce
          * private methods (i.e. helper methods).
          */
+    	while(this.game.getStatus()== GameStatus.IN_PROGRESS)
+    	{
+    		
+    	//dostuff
+    		
+    	}
     }
 }

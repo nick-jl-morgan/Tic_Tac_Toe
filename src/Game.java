@@ -9,11 +9,9 @@ public class Game {
     private Board board = new Board();
     private GameStatus status;
     private AI ai;
+    private char playerChar;
 
-    /*
-     * TBD: Create additional private members if useful.
-     */
-
+    
     /**
      * Construct a new Game according to the given parameters.
      */
@@ -30,6 +28,15 @@ public class Game {
     	{
     		this.ai = new DumbAI(!playerIsX);
     	}
+    	if(playerIsX)
+    	{
+    		this.playerChar='X';
+    	}
+    	else
+    	{
+    		this.playerChar='O';
+    	}
+    	
     }
 
     /**
@@ -62,19 +69,30 @@ public class Game {
      * @precondition status == IN_PROGRESS
      *
      */
-    public boolean placePlayerPiece(int i, int j) {
-		return false;
-        /*
-         * TBD
-         */
+    public boolean placePlayerPiece(int i, int j) 
+    {
+		if(i>2 || j>2)
+		{
+			return false; 
+		} 
+		if(board.get(i,j)==' ')
+		{	
+			Move move = new Move(i,j,playerChar);
+			board = new Board(board, move);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
     }
 
     /**
      * @precondition status == IN_PROGRESS
      */
     public void aiPlacePiece() {
-        /*
-         * TBD
-         */
+       
+    	Move move= ai.chooseMove(board);
+    	board=new Board(board,move);
     }
 }

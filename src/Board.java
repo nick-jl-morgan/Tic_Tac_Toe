@@ -32,6 +32,7 @@ public class Board {
 //    			System.out.println("-----------");
 //    		}
 //    	}
+    	
     	for(int i = 0; i < board.length; i++) {
     		for(int j = 0; j < board.length; j++) {
     			board[i][j] = ' ';
@@ -52,11 +53,30 @@ public class Board {
     /**
      * Convert to a string that shows the board's state.
      */
-    public String toString() {
-		return null;
-        /*
-         * TBD
-         */
+    public String toString() 
+    {
+    	String bb="";
+    	for(int j = 0; j < 3; j++) 
+    	{
+    		
+    		for(int i = 0; i < 3; i++) 
+    		{
+    			
+    			bb +=" " + String.valueOf(board[i][j]) + " ";
+    			if ( i != 2) 
+    			{
+     	           bb=bb +("|"); 
+    	        }
+    		
+    		}
+    		if( j !=2){
+    			bb += "\n----------- \n" ;
+    		}
+    		
+        }
+
+		return bb;
+       
     }
 
     /**

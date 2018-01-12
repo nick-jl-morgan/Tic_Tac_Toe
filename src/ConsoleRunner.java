@@ -54,6 +54,7 @@ public class ConsoleRunner {
         value = ((answer.indexOf("Y") != -1 || answer.equalsIgnoreCase("Y")) && answer.length() == 1) ? true: false; 
         
         this.isChallenging = value;
+        
 //    	if( scanner.next().equalsIgnoreCase("Y") )
 //        {
 //        	this.playerIsX=true;

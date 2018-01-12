@@ -105,6 +105,7 @@ public class ConsoleRunner {
     			
     		} while (!game.placePlayerPiece(i , j) );
 			
+			game.aiPlacePiece();
 			
     	}
     }

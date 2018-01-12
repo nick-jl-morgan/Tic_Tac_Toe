@@ -43,20 +43,24 @@ public class Game {
      * Return a copy of the board's current contents.
      */
     public Board getBoard() {
-        /*
-         * TBD
-         */
+        
     	return board;
+    	
     }
 
     /**
      * Get the game's status.
      */
     public GameStatus getStatus() {
-        /*
-         * TBD
-         */
+    	
+    	//ATTENTION
+    	
+    	// There are 8 possible victories that must be checked, for both the player and the AI.
+    
+    	//if the board is full and neither player nor AI has won then status = DRAW
+    	
     	return status; 
+    	
     }
     
     /**

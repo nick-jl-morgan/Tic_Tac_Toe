@@ -45,9 +45,11 @@ public class Board {
      * 'move' to generate this board's state.
      */
     public Board(Board other, Move move) {
-        /*
-         * TBD
-         */
+    	
+        this.board=other.board;
+        
+        this.board[move.getI()][move.getJ()]=move.getPiece();
+        
     }
 
     /**
@@ -63,6 +65,7 @@ public class Board {
     		{
     			
     			bb +=" " + String.valueOf(board[i][j]) + " ";
+    			
     			if ( i != 2) 
     			{
      	           bb=bb +("|"); 
@@ -84,19 +87,26 @@ public class Board {
      * be in the range [0, 2].
      */
     public char get(int i, int j) {
-		return 0;
-        /*
-         * TBD
-         */
+    	
+		return board[i][j];
+     
     }
     
     /**
      * @return true if there remain no empty spots on the board.
      */
     public boolean isFull() {
-		return false;
-        /*
-         * TBD
-         */
+    	for(int j = 0; j < 3; j++) 
+    	{
+    		
+    		for(int i = 0; i < 3; i++) 
+    		{
+    			if(board[i][j]==' ')
+    			{
+    				return false;
+    			}
+    		}
+    	}
+    	return true;
     }
 }

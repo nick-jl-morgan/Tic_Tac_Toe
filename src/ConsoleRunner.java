@@ -91,5 +91,20 @@ public class ConsoleRunner {
          * There is enough work to do here that you may want to introduce
          * private methods (i.e. helper methods).
          */
+    	while(this.game.getStatus()== GameStatus.IN_PROGRESS)
+    	{
+    		int i , j;
+    		System.out.println(game.getBoard().toString());
+			do
+    		{
+    			System.out.println("Choose a column [0:2]");
+    			i = scanner.nextInt();
+    			System.out.println("Choose a row [0:2]");
+    			j = scanner.nextInt();
+    			
+    		} while (!game.placePlayerPiece(i , j) );
+			
+			
+    	}
     }
 }

@@ -17,6 +17,11 @@ public class Move {
      */
     public Move(int i, int j, char piece) {
         this.piece = piece;
+        
+        this.i=i;
+        
+        this.j=j;
+        
     }
     
     public int getI() {

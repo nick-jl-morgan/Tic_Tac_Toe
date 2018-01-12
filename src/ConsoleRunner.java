@@ -90,6 +90,8 @@ public class ConsoleRunner {
     			j = scanner.nextInt();
     			
     		} while (!game.placePlayerPiece(i , j) );
+			
+			
     	}
     }
 }

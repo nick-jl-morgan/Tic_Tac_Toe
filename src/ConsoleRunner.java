@@ -38,27 +38,40 @@ public class ConsoleRunner {
          * Use the 'next' method of Scanner and the 'matches' of the String
          * class to process user responses as strings.
          */
+    			
     	System.out.println("Would you like to play as X? [Y/N]");
     	
-        if( scanner.next().equalsIgnoreCase("Y") )
-        {
-        	this.playerIsX=true;
-        }
-        else
-        {
-        	this.playerIsX=false;
-        }
-        	
-        System.out.println("Do you want a challenging Opponent? [Y/N]");
-        if( scanner.next().equalsIgnoreCase("Y") )
-        {
-        	this.isChallenging=true;
-        }
-        else
-        {
-        	this.isChallenging=false;
-        }
+    	String answer = scanner.next();
+    	
+    	boolean value = ((answer.indexOf("Y") != -1 || answer.equalsIgnoreCase("Y")) && answer.length() == 1) ? true: false; 
         
+    	this.playerIsX = value;
+        
+        System.out.println("Do you want a challenging Opponent? [Y/N]");
+        
+        answer = scanner.next();
+    	
+        value = ((answer.indexOf("Y") != -1 || answer.equalsIgnoreCase("Y")) && answer.length() == 1) ? true: false; 
+        
+        this.isChallenging = value;
+//    	if( scanner.next().equalsIgnoreCase("Y") )
+//        {
+//        	this.playerIsX=true;
+//        }
+//        else
+//        {
+//        	this.playerIsX=false;
+//        }
+//        	
+//        System.out.println("Do you want a challenging Opponent? [Y/N]");
+//        if( scanner.next().equalsIgnoreCase("Y") )
+//        {
+//        	this.isChallenging=true;
+//        }
+//        else
+//        {
+//        	this.isChallenging=false;
+//        }
         
         game=new Game( playerIsX, isChallenging);
     	

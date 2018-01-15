@@ -173,7 +173,7 @@ public class Game {
      */
     public boolean placePlayerPiece(int i, int j) 
     {
-		if(i>2 || j>2)
+		if(i>2 || j>2 || i<0 || j<0)
 		{
 			return false; 
 		} 

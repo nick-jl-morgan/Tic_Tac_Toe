@@ -95,15 +95,23 @@ public class ConsoleRunner {
     	GameStatus Status = GameStatus.IN_PROGRESS;
     	while(this.game.getStatus()== GameStatus.IN_PROGRESS)
     	{
-    		int i , j;
+    		int i=-1;
+    		int j=-1;
     		System.out.println(game.getBoard().toString());
 			do
     		{
+				try{
     			System.out.println("Choose a column [0:2]");
+    			scanner.nextLine();
     			i = scanner.nextInt();
     			System.out.println("Choose a row [0:2]");
+    			scanner.nextLine();
     			j = scanner.nextInt();
-    			
+				} catch(Exception InputMismatchException)
+				{
+					System.out.println("Please enter an integer value between zero and two.");
+				}
+				
     		} while (!game.placePlayerPiece(i , j) );
 			
 			Status= game.getStatus();
@@ -117,6 +125,9 @@ public class ConsoleRunner {
 			
 			
     	}
+    	
+    	System.out.println(game.getBoard().toString());
+    	
     	if(Status==GameStatus.X_WON)
     	{
     		System.out.println("X won!");

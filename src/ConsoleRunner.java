@@ -92,6 +92,7 @@ public class ConsoleRunner {
          * There is enough work to do here that you may want to introduce
          * private methods (i.e. helper methods).
          */
+    	GameStatus Status = GameStatus.IN_PROGRESS;
     	while(this.game.getStatus()== GameStatus.IN_PROGRESS)
     	{
     		int i , j;
@@ -105,8 +106,28 @@ public class ConsoleRunner {
     			
     		} while (!game.placePlayerPiece(i , j) );
 			
+			Status= game.getStatus();
+			if(Status != GameStatus.IN_PROGRESS)
+			{
+				break;
+			}
+			
 			game.aiPlacePiece();
 			
+			
+			
+    	}
+    	if(Status==GameStatus.X_WON)
+    	{
+    		System.out.println("X won!");
+    	}
+    	if(Status==GameStatus.O_WON)
+    	{
+    		System.out.println("O won!");
+    	}
+    	if(Status==GameStatus.DRAW)
+    	{
+    		System.out.println("Everybody loses!");
     	}
     }
 }

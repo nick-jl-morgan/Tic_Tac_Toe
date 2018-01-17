@@ -22,7 +22,7 @@ public class Game {
     	this.status=GameStatus.IN_PROGRESS;
     	if(challenging)
     	{
-    		this.ai= new SmartAI(!playerIsX);
+    		this.ai= new DumbAI(!playerIsX); //TODO: Implement smart AI. *this.ai = new SmartAI(!playerIsX);
     	}
     	else
     	{

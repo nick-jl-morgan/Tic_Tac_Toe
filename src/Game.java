@@ -10,7 +10,7 @@ public class Game {
     private GameStatus status;
     private AI ai;
     private char playerChar;
-
+    private boolean playerisX;
     
     /**
      * Construct a new Game according to the given parameters.
@@ -36,7 +36,7 @@ public class Game {
     	{
     		this.playerChar='O';
     	}
-    	
+    	this.playerisX=playerIsX;
     }
 
     /**
@@ -192,9 +192,18 @@ public class Game {
     /**
      * @precondition status == IN_PROGRESS
      */
-    public void aiPlacePiece() {
+    public void aiPlacePiece() 
+    {
        
     	Move move= ai.chooseMove(board);
     	board=new Board(board,move);
     }
+    
+    public boolean playerisX()
+    {
+	    return playerisX;
+    }
+    	
 }
+
+	

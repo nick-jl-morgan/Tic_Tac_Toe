@@ -92,6 +92,12 @@ public class ConsoleRunner {
          * There is enough work to do here that you may want to introduce
          * private methods (i.e. helper methods).
          */
+    	
+    	if(!game.playerisX()){
+    		game.aiPlacePiece(); //X always go first so if AI is X then AI places first.
+    	}
+    		
+    	    	
     	GameStatus Status = GameStatus.IN_PROGRESS;
     	while(this.game.getStatus()== GameStatus.IN_PROGRESS)
     	{
@@ -107,7 +113,7 @@ public class ConsoleRunner {
     			System.out.println("Choose a row [0:2]");
     			scanner.nextLine();
     			j = scanner.nextInt();
-				} catch(Exception InputMismatchException)
+				} catch(Exception InputMismatchException) //catch non-integer inputs
 				{
 					System.out.println("Please enter an integer value between zero and two.");
 				}
@@ -121,7 +127,7 @@ public class ConsoleRunner {
 			}
 			
 			game.aiPlacePiece();
-			
+			Status= game.getStatus();
 			
 			
     	}

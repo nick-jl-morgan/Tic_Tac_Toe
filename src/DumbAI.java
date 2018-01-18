@@ -1,7 +1,8 @@
 /**
  * Realization of AI interface using simplistic random placement strategy.
+
  *
- * @author INSERT YOUR NAME(S) HERE
+ * @author Nicholas Morgan (#201335841) & Matthew King (#201524766)
  */
 
 import java.util.Random;

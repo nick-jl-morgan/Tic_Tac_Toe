@@ -2,7 +2,7 @@
  * Represents the logic of the game in terms of detecting wins or draws.  Also
  * places new pieces for the human player or AI.
  *
- * @author INSERT YOUR NAME(S) HERE
+ * @author Nicholas Morgan (#201335841) & Matthew King (#201524766)
  */
 
 public class Game {

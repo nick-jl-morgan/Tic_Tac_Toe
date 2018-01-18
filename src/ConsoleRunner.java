@@ -4,7 +4,7 @@
  * ‘place’ methods in Game.  Prompts the user for inputs and outputs the state
  * of the board to the console.
  *
- * @author Nicholas Morgan (#201335841) & Matthew King
+ * @author Nicholas Morgan (#201335841) & Matthew King (#201524766)
  */
 
 import java.util.Scanner;
@@ -110,9 +110,9 @@ public class ConsoleRunner {
         	
     	} while (error);
     	
-    	System.out.println(playerIsX);
+    	//System.out.println(playerIsX);
     	
-    	System.out.println(isChallenging);
+    	//System.out.println(isChallenging);
         
         game=new Game(playerIsX, isChallenging);
     	
@@ -167,9 +167,9 @@ public class ConsoleRunner {
         				
         			}
         			
-        			if(i >= 3) {
+        			if(i >= 3 || i < 0) {
         				
-        				System.out.println("**Please try again with a number less than 3**");
+        				System.out.println("**Please try again with a number between 0 and 2**");
         				
         				error = true;
         				
@@ -196,9 +196,9 @@ public class ConsoleRunner {
         				System.out.println("Please enter an integer value between zero and two.");
         			}
         			
-        			if(j >= 3) {
+        			if(j >= 3 || j <0 ) {
         				
-        				System.out.println("**Please try again with a number less than 3**");
+        				System.out.println("**Please try again with a number between 0 and 2**");
         				
         				error = true;
         			}

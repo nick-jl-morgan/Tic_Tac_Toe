@@ -38,43 +38,83 @@ public class ConsoleRunner {
          * Use the 'next' method of Scanner and the 'matches' of the String
          * class to process user responses as strings.
          */
-    			
-    	System.out.println("Would you like to play as X? [Y/N]");
     	
-    	String answer = scanner.next();
+    	boolean value = false;
     	
-    	boolean value = ((answer.indexOf("Y") != -1 || answer.equalsIgnoreCase("Y")) && answer.length() == 1) ? true: false; 
-        
-    	this.playerIsX = value;
-        
-        System.out.println("Do you want a challenging Opponent? [Y/N]");
-        
-        answer = scanner.next();
+    	boolean error = false;
     	
-        value = ((answer.indexOf("Y") != -1 || answer.equalsIgnoreCase("Y")) && answer.length() == 1) ? true: false; 
+    	do {
+    		
+    		error = false;
+    		
+    		System.out.println("Would you like to play as X? [Y/N]");
+        	
+        	String answer = scanner.next();
+        	
+        	if((answer.indexOf("Y") != -1 || answer.equalsIgnoreCase("Y")) && answer.length() == 1) {
+        		
+        		value = true;
+        		this.playerIsX = value;
+        		
+        	} else if ((answer.indexOf("N") != -1 || answer.equalsIgnoreCase("N")) && answer.length() == 1) {
+        		
+        		value = false;
+        		
+        		this.playerIsX = value;
+        		
+        	} else {
+        		
+        		error = true;
+        		
+        	}
+        	
+        	if(error) {
+        		
+        		System.out.println("**Please try again**");
+        		
+        	}
+        	
+    	} while (error);
+    	
+    	do {
+    		
+    		error = false;
+    		
+    		System.out.println("Do you want a challenging Opponent? [Y/N]");
+        	
+        	String answer = scanner.next();
+        	
+        	if((answer.indexOf("Y") != -1 || answer.equalsIgnoreCase("Y")) && answer.length() == 1) {
+        		
+        		value = true;
+        		
+        		this.isChallenging = value;
+        		
+        	} else if ((answer.indexOf("N") != -1 || answer.equalsIgnoreCase("N")) && answer.length() == 1) {
+        		
+        		value = false;
+        		
+        		this.isChallenging = value;
+        		
+        	} else {
+        		
+        		error = true;
+        		
+        	}
+        	
+        	if(error) {
+        		
+        		System.out.println("**Please try again**");
+        		
+        	}
+        	
+    	} while (error);
+    	
+    	System.out.println(playerIsX);
+    	
+    	System.out.println(isChallenging);
         
-        this.isChallenging = value;
-        
-//    	if( scanner.next().equalsIgnoreCase("Y") )
-//        {
-//        	this.playerIsX=true;
-//        }
-//        else
-//        {
-//        	this.playerIsX=false;
-//        }
-//        	
-//        System.out.println("Do you want a challenging Opponent? [Y/N]");
-//        if( scanner.next().equalsIgnoreCase("Y") )
-//        {
-//        	this.isChallenging=true;
-//        }
-//        else
-//        {
-//        	this.isChallenging=false;
-//        }
-        
-        game=new Game( playerIsX, isChallenging);
+        game=new Game(playerIsX, isChallenging);
     	
     }
 
@@ -93,36 +133,88 @@ public class ConsoleRunner {
          * private methods (i.e. helper methods).
          */
     	GameStatus Status = GameStatus.IN_PROGRESS;
+    	
     	while(this.game.getStatus()== GameStatus.IN_PROGRESS)
     	{
+    		
     		int i=-1;
+    		
     		int j=-1;
+    		
+    		boolean error = false;
+    		
     		System.out.println(game.getBoard().toString());
-			do
-    		{
-				try{
-    			System.out.println("Choose a column [0:2]");
-    			scanner.nextLine();
-    			i = scanner.nextInt();
-    			System.out.println("Choose a row [0:2]");
-    			scanner.nextLine();
-    			j = scanner.nextInt();
-				} catch(Exception InputMismatchException)
-				{
-					System.out.println("Please enter an integer value between zero and two.");
-				}
-				
-    		} while (!game.placePlayerPiece(i , j) );
+    		
+    		do {
+    			
+    			do {
+    				
+        			error = false;
+        			
+        			try {
+        				
+        				System.out.println("Choose a column [0:2]");
+        				
+            			scanner.nextLine();
+            			
+            			i = scanner.nextInt();
+            			
+        			} catch(Exception InputMismatchException) {
+        				
+        				error = true;
+        				
+        				System.out.println("Please enter an integer value between zero and two.");
+        				
+        			}
+        			
+        			if(i >= 3) {
+        				
+        				System.out.println("**Please try again with a number less than 3**");
+        				
+        				error = true;
+        				
+        			}
+        			
+        		} while(error);
+        		
+        		do {
+        			
+        			error = false;
+        			
+        			try {
+        				
+        				System.out.println("Choose a row [0:2]");
+        				
+    	    			scanner.nextLine();
+    	    			
+    	    			j = scanner.nextInt();
+    	    			
+        			} catch(Exception InputMismatchException) {
+        				
+        				error = true;
+        				
+        				System.out.println("Please enter an integer value between zero and two.");
+        			}
+        			
+        			if(j >= 3) {
+        				
+        				System.out.println("**Please try again with a number less than 3**");
+        				
+        				error = true;
+        			}
+        			
+        		} while(error);
+        		
+    		}while(!game.placePlayerPiece(i , j));
 			
 			Status= game.getStatus();
+			
 			if(Status != GameStatus.IN_PROGRESS)
 			{
 				break;
 			}
 			
 			game.aiPlacePiece();
-			
-			
 			
     	}
     	

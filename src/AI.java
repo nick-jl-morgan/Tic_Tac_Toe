@@ -3,7 +3,7 @@
  *
  * STUDENTS: Nothing to change here.
  *
- * @author INSERT YOUR NAME(S) HERE
+ * @author Nicholas Morgan (#201335841) & Matthew King
  */
 
 public interface AI {
@@ -12,5 +12,5 @@ public interface AI {
      * 
      * @precondition There exists an open space on the board.
      */
-    public Move chooseMove(Board board);
+    public Move chooseMove(Board board); //choose a move from the board
 }

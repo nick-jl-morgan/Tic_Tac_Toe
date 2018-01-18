@@ -7,8 +7,11 @@
 
 public class Game {
     private Board board = new Board();
+    
     private GameStatus status;
+    
     private AI ai;
+    
     private char playerChar;
 
     
@@ -20,6 +23,7 @@ public class Game {
          * TBD
          */
     	this.status=GameStatus.IN_PROGRESS;
+    	
     	if(challenging)
     	{
     		this.ai= new SmartAI(!playerIsX);
@@ -156,7 +160,6 @@ public class Game {
     		status=GameStatus.DRAW;
     	}
     	
-    	
     	return status; 
     	
     }
@@ -180,7 +183,9 @@ public class Game {
 		if(board.get(i,j)==' ')
 		{	
 			Move move = new Move(i,j,playerChar);
+			
 			board = new Board(board, move);
+			
 			return true;
 		}
 		else
@@ -195,6 +200,7 @@ public class Game {
     public void aiPlacePiece() {
        
     	Move move= ai.chooseMove(board);
+    	
     	board=new Board(board,move);
     }
 }

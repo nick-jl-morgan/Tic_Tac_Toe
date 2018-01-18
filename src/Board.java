@@ -1,12 +1,12 @@
 /**
  * An immutable class that represents the state of the 3×3 tic-tac-toe board.
  *
- * @author INSERT YOUR NAME(S) HERE
+ * @author Nicholas Morgan (#201335841) & Matthew King
  */
 
 public class Board {
 
-    private char[][] board = new char[3][3];
+    private char[][] board = new char[3][3]; //creates a matrix of 3X3 characters
 
     /*
      * TBD: Create additional private members if useful.
@@ -19,25 +19,16 @@ public class Board {
         /*
          * TBD
          */
-//    	for(int i = 0; i < board.length; i++) {
-//    		for(int j = 0; j < board.length; j++) {
-//    			board[i][j] = ' ';
-//    			System.out.print(' ' + board[i][j] + ' ');
-//    			if (j != board.length - 1) {
-//    	           System.out.print('|');   
-//    	        }
-//        	}
-//    		System.out.println();
-//    		if(i != board.length - 1) {
-//    			System.out.println("-----------");
-//    		}
-//    	}
     	
-    	for(int i = 0; i < board.length; i++) {
-    		for(int j = 0; j < board.length; j++) {
-    			board[i][j] = ' ';
+    	for(int i = 0; i < board.length; i++) { //for loop through the rows
+    		
+    		for(int j = 0; j < board.length; j++) { //for loop through the columns
+    			
+    			board[i][j] = ' '; //sets empty characters in the board variable 
+    			
         	}
     	}
+    	
     }
 
     /**
@@ -46,9 +37,9 @@ public class Board {
      */
     public Board(Board other, Move move) {
     	
-        this.board=other.board;
+        this.board=other.board; //set the current board to the board private variable
         
-        this.board[move.getI()][move.getJ()]=move.getPiece();
+        this.board[move.getI()][move.getJ()]=move.getPiece(); //place the move on the board 
         
     }
 
@@ -57,28 +48,32 @@ public class Board {
      */
     public String toString() 
     {
-    	String bb="";
-    	for(int j = 0; j < 3; j++) 
+    	String bb=""; //initialization of string value
+    	
+    	for(int j = 0; j < 3; j++) //for loop through the columns 
     	{
     		
-    		for(int i = 0; i < 3; i++) 
+    		for(int i = 0; i < 3; i++)  //for loop through the rows
     		{
     			
-    			bb +=" " + String.valueOf(board[i][j]) + " ";
+    			bb +=" " + String.valueOf(board[i][j]) + " "; //converts the board of character to string values
     			
-    			if ( i != 2) 
+    			if (i != 2) //checks if the rows are not at the end to place the boarder for the board
     			{
      	           bb=bb +("|"); 
     	        }
     		
     		}
-    		if( j !=2){
-    			bb += "\n----------- \n" ;
+    		if(j !=2) //checks if the rows are not at the end to place the boarder for the board
+    		{
+    			
+    			bb += "\n----------- \n" ; //
+    			
     		}
     		
         }
 
-		return bb;
+		return bb; //return the string version of the board
        
     }
 
@@ -88,7 +83,7 @@ public class Board {
      */
     public char get(int i, int j) {
     	
-		return board[i][j];
+		return board[i][j]; //returns the current board position depending on i & j
      
     }
     
@@ -96,15 +91,18 @@ public class Board {
      * @return true if there remain no empty spots on the board.
      */
     public boolean isFull() {
-    	for(int j = 0; j < 3; j++) 
+
+    	for(int j = 0; j < 3; j++) //for loop through the columns 
     	{
     		
-    		for(int i = 0; i < 3; i++) 
+    		for(int i = 0; i < 3; i++) //for loop through the rows 
     		{
-    			if(board[i][j]==' ')
+    			
+    			if(board[i][j]==' ') //checks if the board position is empty 
     			{
     				return false;
     			}
+    			
     		}
     	}
     	return true;

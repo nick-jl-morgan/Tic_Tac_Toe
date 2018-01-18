@@ -2,13 +2,16 @@
  * Contains the main method. Creates a ConsoleRunner and then calls its
  * mainLoop method.
  *
- * @author INSERT YOUR NAME(S) HERE
+ * @author Nicholas Morgan (#201335841) & Matthew King
  */
 
 public class TicTacToeApplication {
 
     public static void main(String[] args) {
-      ConsoleRunner Console = new ConsoleRunner();
-      Console.mainLoop();
+    	
+      ConsoleRunner Console = new ConsoleRunner(); //creates a new console for the game
+      
+      Console.mainLoop(); //calls the main loop to start the game
+      
     }
 }

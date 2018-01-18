@@ -4,7 +4,7 @@
  * ‘place’ methods in Game.  Prompts the user for inputs and outputs the state
  * of the board to the console.
  *
- * @author INSERT YOUR NAME(S) HERE
+ * @author Nicholas Morgan (#201335841) & Matthew King
  */
 
 import java.util.Scanner;
@@ -15,9 +15,9 @@ public class ConsoleRunner {
      * Should the human player be the X?  Note that X always
      * goes first.
      */
-    private boolean playerIsX;
+    private boolean playerIsX; //value to check if the player is X
 
-    private boolean isChallenging;
+    private boolean isChallenging; //value to check player is choosing a challenging opponent  
     
     private Game game;
     

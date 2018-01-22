@@ -23,7 +23,7 @@ public class DumbAI implements AI {
      */
     public DumbAI(boolean aiIsX) 
     {
-        if (aiIsX)
+        if (aiIsX) //checks if the AI is X or O
         {
         	aiChar='X';
         }
@@ -44,7 +44,7 @@ public class DumbAI implements AI {
     	
     		j=random.nextInt(3);
     	
-    	} while(board.get(i, j) !=  ' ');
+    	} while(board.get(i, j) !=  ' '); //checks if the AI can make a move 
     	
 		return new Move(i,j,aiChar);
     }

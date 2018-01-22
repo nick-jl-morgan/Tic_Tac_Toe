@@ -6,6 +6,7 @@
  */
 
 public class Game {
+	
     private Board board = new Board();
     
     private GameStatus status;
@@ -13,6 +14,7 @@ public class Game {
     private AI ai;
     
     private char playerChar;
+    
     private boolean playerisX;
     
     /**
@@ -24,7 +26,7 @@ public class Game {
          */
     	this.status=GameStatus.IN_PROGRESS;
     	
-    	if(challenging)
+    	if(challenging) //checks if the player wanted a challenging AI
     	{
     		this.ai= new DumbAI(!playerIsX); //TODO: Implement smart AI. *this.ai = new SmartAI(!playerIsX);
     	}
@@ -32,7 +34,7 @@ public class Game {
     	{
     		this.ai = new DumbAI(!playerIsX);
     	}
-    	if(playerIsX)
+    	if(playerIsX) //checks if the player is X or O
     	{
     		this.playerChar='X';
     	}
@@ -62,6 +64,8 @@ public class Game {
     	// There are 8 possible victories that must be checked, for both the player and the AI.
     
     	//if the board is full and neither player nor AI has won then status = DRAW
+    	
+    	//columns
     	
     	if(board.get(0,0)=='X' && board.get(0, 1)=='X' && board.get(0, 2)=='X')
     	{
@@ -155,7 +159,7 @@ public class Game {
     	
     	//tie
     	
-    	if(status==GameStatus.IN_PROGRESS && board.isFull())
+    	if(status==GameStatus.IN_PROGRESS && board.isFull()) 
     	{
     		status=GameStatus.DRAW;
     	}
@@ -176,11 +180,11 @@ public class Game {
      */
     public boolean placePlayerPiece(int i, int j) 
     {
-		if(i>2 || j>2 || i<0 || j<0)
+		if(i>2 || j>2 || i<0 || j<0) //checks if i and j are within range
 		{
 			return false; 
 		} 
-		if(board.get(i,j)==' ')
+		if(board.get(i,j)==' ') //checks if the position on the board is empty
 		{	
 			Move move = new Move(i,j,playerChar);
 			
@@ -200,9 +204,9 @@ public class Game {
     public void aiPlacePiece() 
     {
        
-    	Move move= ai.chooseMove(board);
+    	Move move= ai.chooseMove(board); //calls the AI to make a move
     	
-    	board=new Board(board,move);
+    	board=new Board(board,move); //updates board
     }
     
     public boolean playerisX()

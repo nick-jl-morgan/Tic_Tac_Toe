@@ -19,7 +19,7 @@ public class ConsoleRunner {
 
     private boolean isChallenging; //value to check player is choosing a challenging opponent  
     
-    private Game game;
+    private Game game; //value for game state
     
     // Use to process text input from the user.
     private Scanner scanner = new Scanner(System.in);
@@ -39,7 +39,7 @@ public class ConsoleRunner {
          * class to process user responses as strings.
          */
     	
-    	boolean value = false;
+    	boolean value = false; 
     	
     	boolean error = false;
     	
@@ -47,22 +47,23 @@ public class ConsoleRunner {
     		
     		error = false;
     		
-    		System.out.println("Would you like to play as X? [Y/N]");
+    		System.out.println("Would you like to play as X? [Y/N]"); //asks the player if they want to play X or O
         	
-        	String answer = scanner.next();
+        	String answer = scanner.next(); //scans for a keyboard response
         	
-        	if((answer.indexOf("Y") != -1 || answer.equalsIgnoreCase("Y")) && answer.length() == 1) {
+        	if((answer.indexOf("Y") != -1 || answer.equalsIgnoreCase("Y")) && answer.length() == 1) { //checks if the users input was a capital y or lower case, it also checks if the response is one character long
         		
         		value = true;
+        		
         		this.playerIsX = value;
         		
-        	} else if ((answer.indexOf("N") != -1 || answer.equalsIgnoreCase("N")) && answer.length() == 1) {
+        	} else if ((answer.indexOf("N") != -1 || answer.equalsIgnoreCase("N")) && answer.length() == 1) { //checks if the users input was a capital n or lower case, it also checks if the response is one character long
         		
         		value = false;
         		
         		this.playerIsX = value;
         		
-        	} else {
+        	} else { //if the response from the user was not the required value the error variable will be set to true
         		
         		error = true;
         		
@@ -70,33 +71,33 @@ public class ConsoleRunner {
         	
         	if(error) {
         		
-        		System.out.println("**Please try again**");
+        		System.out.println("**Please try again**"); //outputs a error message to the user
         		
         	}
         	
-    	} while (error);
+    	} while (error); //checks if error is false if it is true it will performing the previous do statement
     	
     	do {
     		
     		error = false;
     		
-    		System.out.println("Do you want a challenging Opponent? [Y/N]");
+    		System.out.println("Do you want a challenging Opponent? [Y/N]"); //outputs the question if the user wants a challenging AI
         	
         	String answer = scanner.next();
         	
-        	if((answer.indexOf("Y") != -1 || answer.equalsIgnoreCase("Y")) && answer.length() == 1) {
+        	if((answer.indexOf("Y") != -1 || answer.equalsIgnoreCase("Y")) && answer.length() == 1) { //checks if the users input was a capital y or lower case, it also checks if the response is one character long
         		
         		value = true;
         		
         		this.isChallenging = value;
         		
-        	} else if ((answer.indexOf("N") != -1 || answer.equalsIgnoreCase("N")) && answer.length() == 1) {
+        	} else if ((answer.indexOf("N") != -1 || answer.equalsIgnoreCase("N")) && answer.length() == 1) { //checks if the users input was a capital n or lower case, it also checks if the response is one character long
         		
         		value = false;
         		
         		this.isChallenging = value;
         		
-        	} else {
+        	} else { //if the response from the user was not the required value the error variable will be set to true
         		
         		error = true;
         		
@@ -109,12 +110,8 @@ public class ConsoleRunner {
         	}
         	
     	} while (error);
-    	
-    	//System.out.println(playerIsX);
-    	
-    	//System.out.println(isChallenging);
         
-        game=new Game(playerIsX, isChallenging);
+        game=new Game(playerIsX, isChallenging); //calls the constructor Game and passes the user response to both questions
     	
     }
 
@@ -132,18 +129,18 @@ public class ConsoleRunner {
          * There is enough work to do here that you may want to introduce
          * private methods (i.e. helper methods).
          */
-    	GameStatus Status = GameStatus.IN_PROGRESS;
+    	GameStatus Status = GameStatus.IN_PROGRESS; //sets the status of the game to in progress 
     	
-    	while(this.game.getStatus()== GameStatus.IN_PROGRESS)
+    	while(this.game.getStatus()== GameStatus.IN_PROGRESS) //loop for the game that will end until status is not in progress
     	{
     		
     		int i=-1;
     		
     		int j=-1;
     		
-    		boolean error = false;
+    		boolean error = false; //variable to check for a error 
     		
-    		System.out.println(game.getBoard().toString());
+    		System.out.println(game.getBoard().toString()); //prints the board state
     		
     		do {
     			
@@ -151,7 +148,7 @@ public class ConsoleRunner {
     				
         			error = false;
         			
-        			try {
+        			try { //try and catch statement for the column value from the user
         				
         				System.out.println("Choose a column [0:2]");
         				
@@ -167,7 +164,7 @@ public class ConsoleRunner {
         				
         			}
         			
-        			if(i >= 3 || i < 0) {
+        			if(i >= 3 || i < 0) { //checks if the value is between 0-2
         				
         				System.out.println("**Please try again with a number between 0 and 2**");
         				
@@ -181,7 +178,7 @@ public class ConsoleRunner {
         			
         			error = false;
         			
-        			try {
+        			try { //try and catch statement for the row value from the user
         				
         				System.out.println("Choose a row [0:2]");
         				
@@ -196,7 +193,7 @@ public class ConsoleRunner {
         				System.out.println("Please enter an integer value between zero and two.");
         			}
         			
-        			if(j >= 3 || j <0 ) {
+        			if(j >= 3 || j <0 ) { //checks if the value is between 0-2
         				
         				System.out.println("**Please try again with a number between 0 and 2**");
         				
@@ -205,22 +202,22 @@ public class ConsoleRunner {
         			
         		} while(error);
         		
-    		}while(!game.placePlayerPiece(i , j));
+    		}while(!game.placePlayerPiece(i , j)); //checks if the player can place a move
 			
-			Status= game.getStatus();
+			Status= game.getStatus(); //checks the status of the game
 			
-			if(Status != GameStatus.IN_PROGRESS)
+			if(Status != GameStatus.IN_PROGRESS) //checks if the game is still in progress 
 			{
 				break;
 			}
 			
-			game.aiPlacePiece();
+			game.aiPlacePiece(); //makes a call for the AI to make a move 
 			
     	}
     	
-    	System.out.println(game.getBoard().toString());
+    	System.out.println(game.getBoard().toString()); //prints out board state
     	
-    	if(Status==GameStatus.X_WON)
+    	if(Status==GameStatus.X_WON) 
     	{
     		System.out.println("X won!");
     	}
